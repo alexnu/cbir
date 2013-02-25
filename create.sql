@@ -1,0 +1,45 @@
+DROP DATABASE IF EXISTS cbir;
+CREATE DATABASE cbir;
+USE cbir
+
+CREATE TABLE images(
+image_id INT AUTO_INCREMENT,
+filename VARCHAR(200) NOT NULL,
+Y_average FLOAT NOT NULL,
+I_average FLOAT NOT NULL,
+Q_average FLOAT NOT NULL,
+PRIMARY KEY(image_id)
+);
+
+CREATE TABLE coeffs_y(
+X INT NOT NULL,
+Y INT NOT NULL,
+sign ENUM('+','-') NOT NULL,
+image INT NOT NULL,
+PRIMARY KEY(X,Y,sign,image),
+CONSTRAINT in_images_y
+FOREIGN KEY (image) REFERENCES images(image_id)
+ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE coeffs_i(
+X INT NOT NULL,
+Y INT NOT NULL,
+sign ENUM('+','-') NOT NULL,
+image INT NOT NULL,
+PRIMARY KEY(X,Y,sign,image),
+CONSTRAINT in_images_i
+FOREIGN KEY (image) REFERENCES images(image_id)
+ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE coeffs_q(
+X INT NOT NULL,
+Y INT NOT NULL,
+sign ENUM('+','-') NOT NULL,
+image INT NOT NULL,
+PRIMARY KEY(X,Y,sign,image),
+CONSTRAINT in_images_q
+FOREIGN KEY (image) REFERENCES images(image_id)
+ON DELETE CASCADE ON UPDATE CASCADE
+);
