@@ -1,7 +1,7 @@
 cbir
 ====
 
-Content-based image retrieval
+Content-based image retrieval. There is a database of images and you can use a sample image to search for similar images in the database using YIQ transformation.
 
 A demo instance can be found at http://cbir.co.nf.
 
